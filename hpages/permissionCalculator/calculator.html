@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Unix Permission Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+</head>
+<body>
+<h1>Unix Permission Calculator</h1>
+<div class="container">
+    <div class="titles">
+        <p>Special</p>
+        <p>User</p>
+        <p>Group</p>
+        <p>Other</p>
+    </div>
+    <div class="tables">
+
+        <div class="1">
+            <label for="04">setuid</label>
+            <input type="checkbox" id="04" onclick="handleCode(this.id)">
+            <label for="02">setgid</label>
+            <input type="checkbox" id="02" onclick="handleCode(this.id)">
+            <label for="01">stickyBit</label>
+            <input type="checkbox" id="01" onclick="handleCode(this.id)">
+        </div>
+
+        <div class="2">
+            <label for="14">Read</label>
+            <input type="checkbox" id="14" onclick="handleCode(this.id)">
+            <label for="12">Write</label>
+            <input type="checkbox" id="12" onclick="handleCode(this.id)">
+            <label for="11">Execute</label>
+            <input type="checkbox" id="11" onclick="handleCode(this.id)">
+        </div>
+
+        <div class="3">
+            <label for="24">Read</label>
+            <input type="checkbox" id="24" onclick="handleCode(this.id)">
+            <label for="22">Write</label>
+            <input type="checkbox" id="22" onclick="handleCode(this.id)">
+            <label for="21">Execute</label>
+            <input type="checkbox" id="21" onclick="handleCode(this.id)">
+        </div>
+
+        <div class="4">
+            <label for="34">Read</label>
+            <input type="checkbox" id="34" onclick="handleCode(this.id)">
+            <label for="32">Write</label>
+            <input type="checkbox" id="32" onclick="handleCode(this.id)">
+            <label for="31">Execute</label>
+            <input type="checkbox" id="31" onclick="handleCode(this.id)">
+        </div>
+
+
+    </div>
+    <div class="calculator">
+        <p id="calcNumber"> 0000 </p>
+    </div>
+</div>
+</body>
+</html>

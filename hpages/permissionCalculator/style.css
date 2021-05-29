@@ -1,0 +1,67 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #1b1a17;
+}
+
+h1 {
+    color: #f0e3ca;
+    font-family: 'Teko', sans-serif;
+}
+
+p, label {
+    color: #ff8303;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.calculator p {
+    color: #f0e3ca;
+}
+
+h1 {
+    margin: 0;
+    font-size: 4vh;
+    padding: 0;
+}
+
+p {
+    font-size: 1.5vw;
+}
+
+.titles {
+    display: flex;
+    width: 80vw;
+    justify-content: space-evenly;
+}
+
+.tables {
+    display: flex;
+    width: 70vw;
+    justify-content: space-evenly;
+}
+
+.calculator {
+    margin-top: 4vh;
+    border: 1px solid wheat;
+    border-radius: 20px;
+}
+
+.container {
+
+    width: 100vw;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/*@media screen and (max-width: 800px) {*/
+/*    .calculator {*/
+/*        flex-direction: column;*/
+/*    }*/
+/*}*/
