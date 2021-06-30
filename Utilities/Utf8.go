@@ -26,7 +26,6 @@ func Convert(path string) string {
 }
 
 func mapValues(val string) string {
-	fmt.Println(val)
 	var intVal, _ = strconv.Atoi(val)
 	switch intVal {
 	case 20:

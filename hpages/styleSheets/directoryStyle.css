@@ -1,0 +1,57 @@
+a { text-decoration: none; color:black; }         /* Unvisited link  */
+a:visited { text-decoration: none; color:black;} /* Visited link    */
+a:hover {border-color: #233E8B; text-decoration: none; color:black;}   /* Mouse over link */
+
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: sans-serif;
+}
+h3{
+    font-size:12px;
+    color:#888;
+}
+.content{
+    max-width:80%;margin:60px 10%;
+    position:relative;
+}
+.folder-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+p{
+    display: block;
+}
+
+
+.tile{
+    border-radius: 3px;
+    width: calc(20% - 17px);
+    margin-bottom: 23px;
+    text-align: center;
+    border: 1px solid green;
+    transition: 0.2s all ease-in;
+    position: relative;
+    padding: 35px 16px 25px;
+    margin-right: 17px;
+    cursor: pointer;
+}
+
+.tile:hover{
+    background-color: rgba(35, 63, 140, 0.21);
+}
+
+.tile i{
+    color: #1E6F5C;
+    height: 55px;
+    margin-bottom: 20px;
+    font-size: 55px;
+    display: block;
+    cursor: pointer;
+}
+.tile i.mdi-file-document{
+    color:#29BB89;
+}
+
