@@ -2,75 +2,91 @@
 <head>
     <meta charset="UTF-8">
     <link href="http://localhost:8080/static/directoryStructure/styleSheets/directoryStyle.css" rel="stylesheet">
-<!--    <link href="styleSheets/directoryStyle.css" rel="stylesheet">-->
+    <script src="http://localhost:8080/static/directoryStructure/js/main.js" > </script>
+    <!--    <link href="styleSheets/directoryStyle.css" rel="stylesheet">-->
     <link href="https://cdn.materialdesignicons.com/2.5.94/css/materialdesignicons.min.css" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+<div class="mkDirOverlay" style="display: none" id="mkDirOverlay">
+    <div class="mkDirContainer">
+        <form action="/mkdir" method="post" >
+            <input id="folderName" type="text" name="folderName" placeholder="Folder Name" class="mkDirField">
+            <button type="submit" class="mkDirButton">Create a folder</button>
+            <button type="button"  class="closeButton mkDirButton" onclick="showOverlay()">Close</button>
+        </form>
+    </div>
+</div>
 <div class="content">
     <p> Current dir: {{.DirName}} </p>
 
-    <form action="/upload" enctype="multipart/form-data" method="post">
-        <input type="file" name="uploadFile">
-        <input type="submit">
-    </form>
+    <div class="forms">
+        <form action="/upload" enctype="multipart/form-data" method="post">
+            <input type="file" name="uploadFile">
+            <input type="submit">
+        </form>
+
+        <form class="mkDirButtonClass">
+            <button type="button" onclick="showOverlay()">Create a folder</button>
+        </form>
+    </div>
 
 
     <div class="folder-wrap">
 
-         <!--************************* CUT FROM HERE *************************-->
+        <!--************************* CUT FROM HERE *************************-->
 
-<!--        <a href="https://googleeeeeeeeeeeeee.com" class="tile folder">-->
-<!--            <div>-->
-<!--                <i cla  ss="mdi mdi-folder"></i>-->
-<!--                <h3>Folder name</h3>-->
-<!--                <p>Something something</p>-->
-<!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
-<!--        </a>-->
+        <!--        <a href="https://googleeeeeeeeeeeeee.com" class="tile folder">-->
+        <!--            <div>-->
+        <!--                <i cla  ss="mdi mdi-folder"></i>-->
+        <!--                <h3>Folder name</h3>-->
+        <!--                <p>Something something</p>-->
+        <!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
+        <!--        </a>-->
 
 
-<!--        <a href="https://google.com" class="tile folder">-->
-<!--            <div>-->
-<!--                <i class="mdi mdi-folder"></i>-->
-<!--                <h3>Folder name</h3>-->
-<!--                <p>Something something</p>-->
-<!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
-<!--        </a>-->
+        <!--        <a href="https://google.com" class="tile folder">-->
+        <!--            <div>-->
+        <!--                <i class="mdi mdi-folder"></i>-->
+        <!--                <h3>Folder name</h3>-->
+        <!--                <p>Something something</p>-->
+        <!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
+        <!--        </a>-->
 
-<!--        <a href="https://google.com" class="tile folder">-->
-<!--            <div>-->
-<!--                <i class="mdi mdi-folder"></i>-->
-<!--                <h3>Folder name</h3>-->
-<!--                <p>Something something</p>-->
-<!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
-<!--        </a>-->
+        <!--        <a href="https://google.com" class="tile folder">-->
+        <!--            <div>-->
+        <!--                <i class="mdi mdi-folder"></i>-->
+        <!--                <h3>Folder name</h3>-->
+        <!--                <p>Something something</p>-->
+        <!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
+        <!--        </a>-->
 
-<!--        <a href="https://google.com" class="tile folder">-->
-<!--            <div>-->
-<!--                <i class="mdi mdi-folder"></i>-->
-<!--                <h3>Folder name</h3>-->
-<!--                <p>Something something</p>-->
-<!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
-<!--        </a>-->
+        <!--        <a href="https://google.com" class="tile folder">-->
+        <!--            <div>-->
+        <!--                <i class="mdi mdi-folder"></i>-->
+        <!--                <h3>Folder name</h3>-->
+        <!--                <p>Something something</p>-->
+        <!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
+        <!--        </a>-->
 
-<!--        <a href="https://google.com" class="tile folder">-->
-<!--            <div>-->
-<!--                <i class="mdi mdi-folder"></i>-->
-<!--                <h3>Folder name</h3>-->
-<!--                <p>Something something</p>-->
-<!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
-<!--        </a>-->
+        <!--        <a href="https://google.com" class="tile folder">-->
+        <!--            <div>-->
+        <!--                <i class="mdi mdi-folder"></i>-->
+        <!--                <h3>Folder name</h3>-->
+        <!--                <p>Something something</p>-->
+        <!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
+        <!--        </a>-->
 
-<!--        <a href="https://google.com" class="tile form">-->
-<!--            <div>-->
-<!--                <i class="mdi mdi-file-document"></i>-->
-<!--                <h3>Folder name</h3>-->
-<!--                <p>Something something</p>-->
-<!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
-<!--        </a>-->
+        <!--        <a href="https://google.com" class="tile form">-->
+        <!--            <div>-->
+        <!--                <i class="mdi mdi-file-document"></i>-->
+        <!--                <h3>Folder name</h3>-->
+        <!--                <p>Something something</p>-->
+        <!--            </div>&lt;!&ndash; .tile.folder &ndash;&gt;-->
+        <!--        </a>-->
 
-<!--    </div>&lt;!&ndash; .folder-wrap &ndash;&gt;-->
+        <!--    </div>&lt;!&ndash; .folder-wrap &ndash;&gt;-->
 
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
+        <!--</div>-->
+        <!--</body>-->
+        <!--</html>-->

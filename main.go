@@ -46,7 +46,13 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		functionalities.Login(w, r)
 
 	} else if strings.Contains(r.URL.String(), "/upload") {
-		functionalities.Upload(w,r,functionalities.GetWindowsPath())
+
+		functionalities.Upload(w, r, functionalities.GetWindowsPath())
+
+	} else if strings.Contains(r.URL.String(), "/mkdir") {
+
+		functionalities.MakeDir(w, r, functionalities.GetWindowsPath())
+
 	}
 
 }
