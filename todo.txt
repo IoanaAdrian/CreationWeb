@@ -1,3 +1,6 @@
-- design
+--> Custom JSON parser (you will have a json file where you can configure constant things: folderName, hostName)
+//- design
+- error handling refactor
 - auth
 - upload
+- sys resource management

@@ -1,11 +1,11 @@
-package Utilities
+package utilities
 
 import (
 	"fmt"
 	"strconv"
 )
 
-func Convert(path string) string {
+func HtmlPathToWindows(path string) string {
 	var result string
 	//var windowsResult string
 	for i := 0; i < len(path); i++ {
@@ -54,6 +54,6 @@ func mapValues(val string) string {
 
 func main() {
 
-	fmt.Println(Convert("/testdir/txt1%20-%20Copy%20%283%29.txt"))
+	fmt.Println(HtmlPathToWindows("/testdir/txt1%20-%20Copy%20%283%29.txt"))
 
 }

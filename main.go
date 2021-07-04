@@ -1,23 +1,17 @@
 package main
 
 import (
-	ut "./Utilities"
-	"bytes"
+	functionalities "./functionalities"
+	ut "./utilities"
 	"fmt"
-	"html/template"
-	"io"
 	"io/ioutil"
 	"net/http"
-	"os"
 	"strings"
 )
 
-type tmp struct {
-	Name string
-	Path string
-}
-
 //var displayPath = "./testdir"
+
+const MAIN_DIR_PATH = "testdir"
 
 func main() {
 
@@ -33,60 +27,26 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	//}
 	//fmt.Println(ip)
 
-	if strings.HasPrefix(r.URL.String(), "/testdir") {
-		var path = "." + r.URL.String()
-		windowsPath := ut.Convert(path)
-		fmt.Println(windowsPath)
+	if len(r.URL.String()) == 1 {
 
-		instance, err := os.Stat(windowsPath)
-		if err != nil {
-			panic(err)
-		}
+		page, err := ioutil.ReadFile("./static/index.html")
+		ut.HandleErr(err)
+		fmt.Fprintf(w, string(page))
+	}
 
-		if instance.Mode().IsDir() {
+	if strings.HasPrefix(r.URL.String(), "/"+MAIN_DIR_PATH) {
 
+		functionalities.FileSystemHandle(w, r)
 
-			pageBeginning, err := ioutil.ReadFile("./hpages/directoryStructure.html")
+	} else if strings.HasPrefix(r.URL.String(), "/static") {
 
-			if err != nil {
-				panic(err)
-			}
-			fmt.Fprintf(w, string(pageBeginning))
-			fmt.Fprintf(w,"<p>"+windowsPath+"</p>")
-			fmt.Fprintf(w,"<div class='folder-wrap'>")
+		functionalities.HandleStaticFiles(w, r)
+	} else if strings.HasPrefix(r.URL.String(), "/login") {
 
-			file, err := ioutil.ReadDir(windowsPath)
-			if err != nil {
-				panic(err)
-			}
-			for _, f := range file {
-				t := template.New("ex")
-				p := tmp{f.Name(), windowsPath[1:]}
+		functionalities.Login(w, r)
 
-				if f.IsDir() {
-					t, _ = t.Parse("<a href='{{.Path}}/{{.Name}}' class='tile folder'><div><i class='mdi mdi-folder'></i><h3>{{.Name}}</h3><p>Description</p></div></a>")
-					_ = t.Execute(w, p)
-				} else {
-					t, _ = t.Parse("<a href='{{.Path}}/{{.Name}}' class='tile form'><div><i class='mdi mdi-file-document'></i><h3>{{.Name}}</h3><p>Description</p></div></a>")
-					_ = t.Execute(w, p)
-				}
-			}
-		} else {
-			content, err := ioutil.ReadFile(windowsPath)
-			if err != nil {
-				panic(err)
-			}
-			w.Header().Set("Content-Disposition", "attachment; filename="+instance.Name())
-			w.Header().Set("Content-Type", r.Header.Get("Content-Type"))
-			_, _ = io.Copy(w, bytes.NewReader(content))
-		}
-	} else if strings.HasPrefix(r.URL.String(), "/hpages") {
-		loadPage, err := ioutil.ReadFile("." + r.URL.String())
-		if err != nil {
-			fmt.Fprintf(w, "<h1 style='color:red'>Page Unvalaible</h1>")
-		} else {
-			fmt.Fprintf(w, string(loadPage))
-		}
+	} else if strings.Contains(r.URL.String(), "/upload") {
+		functionalities.Upload(w,r,functionalities.GetWindowsPath())
 	}
 
 }

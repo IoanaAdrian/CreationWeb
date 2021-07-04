@@ -1,13 +1,5 @@
-#Task: StorageServer
-
-- Project's name
-  >Creation web
-
-- What does it do?
-  >Multi-functional web server
-  
-- Which programming languages are used?
-  >Golang.
+#Creation Web
+  > A storage server, with secured login, written in Go. 
 
 ### Resources:
 
