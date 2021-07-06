@@ -1,5 +1,5 @@
 #Creation Web
-  > A storage server, with secured login, written in Go. 
+  > A storage server, with a secured login, written in Go. 
 
 ### Resources:
 

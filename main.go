@@ -1,7 +1,7 @@
 package main
 
 import (
-	functionalities "./functionalities"
+	"./functionalities"
 	ut "./utilities"
 	"fmt"
 	"io/ioutil"
@@ -14,7 +14,6 @@ import (
 const MAIN_DIR_PATH = "testdir"
 
 func main() {
-
 	http.HandleFunc("/", handler)
 	panic(http.ListenAndServe(":8080", nil))
 }
@@ -32,27 +31,28 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		page, err := ioutil.ReadFile("./static/index.html")
 		ut.HandleErr(err)
 		fmt.Fprintf(w, string(page))
-	}
-
-	if strings.HasPrefix(r.URL.String(), "/"+MAIN_DIR_PATH) {
-
-		functionalities.FileSystemHandle(w, r)
-
-	} else if strings.HasPrefix(r.URL.String(), "/static") {
-
-		functionalities.HandleStaticFiles(w, r)
-	} else if strings.HasPrefix(r.URL.String(), "/login") {
+	}else if strings.HasPrefix(r.URL.String(), "/login") {
 
 		functionalities.Login(w, r)
 
-	} else if strings.Contains(r.URL.String(), "/upload") {
+	} else if ut.CheckEPass(w, r,functionalities.GetPass()) {
 
-		functionalities.Upload(w, r, functionalities.GetWindowsPath())
+		if strings.HasPrefix(r.URL.String(), "/"+MAIN_DIR_PATH) {
 
-	} else if strings.Contains(r.URL.String(), "/mkdir") {
+			functionalities.FileSystemHandle(w, r)
 
-		functionalities.MakeDir(w, r, functionalities.GetWindowsPath())
+		} else if strings.HasPrefix(r.URL.String(), "/static") {
 
+			functionalities.HandleStaticFiles(w, r)
+		}  else if strings.Contains(r.URL.String(), "/upload") {
+
+			functionalities.Upload(w, r, functionalities.GetWindowsPath())
+
+		} else if strings.Contains(r.URL.String(), "/mkdir") {
+
+			functionalities.MakeDir(w, r, functionalities.GetWindowsPath())
+
+		}
 	}
 
 }

@@ -6,6 +6,8 @@ import (
 	"net/http"
 )
 
+const PASSOWRD = "muzeu321"
+
 func Login(w http.ResponseWriter, r *http.Request){
 	/*
 	TODO:
@@ -17,5 +19,13 @@ func Login(w http.ResponseWriter, r *http.Request){
 	ut.HandleErr(r.ParseForm())
 	pass := r.FormValue("password")
 	fmt.Println(pass)
+	if pass==PASSOWRD{
+		ut.StoreEPass(w,ut.Encrypt(pass))
+		http.Redirect(w, r, "http://moth5002.go.ro:3000/testdir", 302)
+	}
 
+}
+
+func GetPass() string {
+	return PASSOWRD
 }
