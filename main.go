@@ -11,7 +11,7 @@ import (
 
 //var displayPath = "./testdir"
 
-const MAIN_DIR_PATH = "testdir"
+const MAIN_DIR_PATH = "softHoarders"
 
 func main() {
 	http.HandleFunc("/", handler)

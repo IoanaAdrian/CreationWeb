@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-const PASSOWRD = "muzeu321"
+const PASSOWRD = ""
 
 func Login(w http.ResponseWriter, r *http.Request){
 	/*
@@ -21,7 +21,7 @@ func Login(w http.ResponseWriter, r *http.Request){
 	fmt.Println(pass)
 	if pass==PASSOWRD{
 		ut.StoreEPass(w,ut.Encrypt(pass))
-		http.Redirect(w, r, "http://moth5002.go.ro:3000/testdir", 302)
+		http.Redirect(w, r, "http://moth5002.go.ro:3000/softHoarders", 302)
 	}
 
 }

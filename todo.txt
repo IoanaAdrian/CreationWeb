@@ -1,4 +1,4 @@
-//Form validation  + link validation (if testdir contains a ? don't even test it)
+/Form validation  + link validation (if testdir contains a ? don't even test it)
 
 --> Custom JSON parser (you will have a json file where you can configure constant things: folderName, hostName)
 //- design
