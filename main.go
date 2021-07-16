@@ -9,13 +9,17 @@ import (
 	"strings"
 )
 
-//var displayPath = "./testdir"
 
-const MAIN_DIR_PATH = "softHoarders"
+var testing = false
 
 func main() {
-	http.HandleFunc("/", handler)
-	panic(http.ListenAndServe(":8080", nil))
+	if testing {
+		ut.PathVisualisation()
+	} else {
+		ut.SetConfig()
+		http.HandleFunc("/", handler)
+		panic(http.ListenAndServe(":8080", nil))
+	}
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
@@ -31,20 +35,20 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		page, err := ioutil.ReadFile("./static/index.html")
 		ut.HandleErr(err)
 		fmt.Fprintf(w, string(page))
-	}else if strings.HasPrefix(r.URL.String(), "/login") {
+	} else if strings.HasPrefix(r.URL.String(), "/login") {
 
 		functionalities.Login(w, r)
 
-	} else if ut.CheckEPass(w, r,functionalities.GetPass()) {
+	} else if ut.CheckEPass(w, r, ut.GetPassword()) {
 
-		if strings.HasPrefix(r.URL.String(), "/"+MAIN_DIR_PATH) {
+		if strings.HasPrefix(r.URL.String(), "/"+ut.GetMainDirPath()) {
 
 			functionalities.FileSystemHandle(w, r)
 
 		} else if strings.HasPrefix(r.URL.String(), "/static") {
 
 			functionalities.HandleStaticFiles(w, r)
-		}  else if strings.Contains(r.URL.String(), "/upload") {
+		} else if strings.Contains(r.URL.String(), "/upload") {
 
 			functionalities.Upload(w, r, functionalities.GetWindowsPath())
 

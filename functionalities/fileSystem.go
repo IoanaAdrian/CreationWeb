@@ -16,6 +16,7 @@ type element struct {
 
 type pathS struct {
 	DirName string
+	URL string
 }
 var windowsPath string
 
@@ -36,7 +37,7 @@ func FileSystemHandle(w http.ResponseWriter, r *http.Request) {
 	if instance.Mode().IsDir() {
 
 		page := template.Must(template.ParseFiles("./static/directoryStructure/main.html"))
-		tmp := pathS{windowsPath}
+		tmp := pathS{windowsPath,ut.GetURL()}
 		ut.HandleErr(page.Execute(w, tmp))
 
 		//fmt.Fprintf(w, "<p>"+windowsPath+"</p>")

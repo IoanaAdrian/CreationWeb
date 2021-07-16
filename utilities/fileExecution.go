@@ -1,6 +1,7 @@
 package utilities
 
 import (
+	"fmt"
 	"os/exec"
 )
 
@@ -15,4 +16,10 @@ func Decrypt(s string, num string) string {
 	out, err := cmd.CombinedOutput()
 	HandleErr(err)
 	return string(out)
+}
+func PathVisualisation(){
+	cmd := exec.Command("/home/adrian/ADI/2WayEncryption/EncDecrCpp","-e","pukla")
+	out, err := cmd.CombinedOutput()
+	HandleErr(err)
+	fmt.Println(string(out))
 }

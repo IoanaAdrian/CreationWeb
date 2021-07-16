@@ -1,0 +1,3 @@
+PATH softHoarders
+PASS muzeu321
+URL http://localhost:8080
